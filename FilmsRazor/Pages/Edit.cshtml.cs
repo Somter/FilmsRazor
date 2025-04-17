@@ -10,7 +10,7 @@ namespace FilmsRazor.Pages
         private readonly IWebHostEnvironment env;
         [BindProperty] public Movie Movie { get; set; }
         [BindProperty] public IFormFile UploadedPoster { get; set; }
-        public EditModel(MovieContext c, IWebHostEnvironment e) { context = c; env = e; } 
+        public EditModel(MovieContext c, IWebHostEnvironment e) { context = c; env = e; }  
         public async Task<IActionResult> OnGetAsync(int id)
         {
             Movie = await context.Movies.FindAsync(id);
