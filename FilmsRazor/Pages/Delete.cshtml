@@ -1,0 +1,31 @@
+﻿@page
+@model FilmsRazor.Pages.DeleteModel
+@{
+    ViewData["Title"] = "Удалить фильм";
+}
+
+<div class="container-delete mt-4 d-flex flex-column align-items-center">
+    <div class="card film-card">
+        <div class="row g-0">
+            <div class="col-auto poster-frame">
+                <img src="@Model.Movie.Poster" alt="@Model.Movie.Name Poster" class="img-thumbnail" />
+            </div>
+            <div class="col">
+                <div class="card-body">
+                    <h5 class="card-title">@Model.Movie.Name (@Model.Movie.Year)</h5>
+                    <p><strong>Режиссер:</strong> @Model.Movie.Director</p>
+                    <p><strong>Жанр:</strong> @Model.Movie.Genre</p>
+                    <p><strong>Описание:</strong> @Model.Movie.Description</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form method="post" class="text-center mt-3">
+        <input type="hidden" asp-for="Movie.Id" />
+        <div class="mt-3">
+            <button type="submit" class="btn btn-danger">Удалить</button>
+            <a class="btn btn-secondary" asp-page="/Index">Отмена</a>
+        </div>
+    </form>
+</div>

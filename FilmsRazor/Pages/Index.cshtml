@@ -1,0 +1,40 @@
+﻿@page
+@model FilmsRazor.Pages.IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Лучшие фильмы</h2>
+    <a class="btn save-button" asp-page="/Create">Create</a>
+</div>
+<div class="container mt-2">
+    <div class="row">
+        @foreach (var movie in Model.Movies)
+        {
+            <div class="col-md-4 mb-4 d-flex">
+                <div class="card film-card h-100">
+                    <div class="row g-0 flex-grow-1">
+                        <div class="col-auto poster-frame">
+                            <img src="@movie.Poster" alt="Poster of @movie.Name">
+                        </div>
+                        <div class="col d-flex flex-column">
+                            <div class="card-body flex-grow-1">
+                                <h5 class="card-title">@movie.Name (@movie.Year)</h5>
+                                <p><strong>Жанр:</strong> @movie.Genre</p>
+                                <p class="card-text description">
+                                    @(movie.Description != null && movie.Description.Length > 100
+                                        ? movie.Description.Substring(0, 50) + "..."
+                                        : movie.Description)
+                                </p>
+                            </div>
+                            <div class="main">
+                                <a asp-page="/Details" asp-route-id="@movie.Id">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

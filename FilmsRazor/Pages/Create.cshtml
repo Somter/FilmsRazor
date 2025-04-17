@@ -1,0 +1,54 @@
+﻿@page
+@model FilmsRazor.Pages.CreateModel
+@{
+    ViewData["Title"] = "Добавить фильм";
+}
+
+<h1>Добавить фильм</h1>
+
+<form method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="Movie.Name"></label>
+        <input asp-for="Movie.Name" class="form-control" />
+        <span asp-validation-for="Movie.Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Movie.Director"></label>
+        <input asp-for="Movie.Director" class="form-control" />
+        <span asp-validation-for="Movie.Director" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Movie.Genre"></label>
+        <input asp-for="Movie.Genre" class="form-control" />
+        <span asp-validation-for="Movie.Genre" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Movie.Year"></label>
+        <input asp-for="Movie.Year" class="form-control" />
+        <span asp-validation-for="Movie.Year" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Movie.Description"></label>
+        <textarea asp-for="Movie.Description" class="form-control"></textarea>
+        <span asp-validation-for="Movie.Description" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Загрузите постер</label>
+        <input type="file" asp-for="UploadedPoster" class="form-control" />
+        <span asp-validation-for="UploadedPoster" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn save-button">Save</button>
+    <a class="btn cancel-button" asp-page="/Index">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
